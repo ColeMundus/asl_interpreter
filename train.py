@@ -11,7 +11,7 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.utils import np_utils
 from keras.layers.convolutional import MaxPooling2D, Conv2D
 
-load_existing_model = False
+load_existing_model = True
 
 conv = 'abcdefghijklmnopqrstuvwxyz'
 
@@ -25,12 +25,14 @@ def load_data_from_file(filename):
 				parsed_image = [[int(p) for p in data[i*28:(i+1)*28]] for i in range(28)]
 				x_data.append(parsed_image)
 				y_data.append(line.strip().split(',')[0])
-	return np.asarray(x_train), np.asarray(y_data)
+	return np.asarray(x_data), np.asarray(y_data)
 
-x_train, y_train = load_data_from_file('sign_mnist_train.csv')
-x_test, y_test = load_data_from_file('sign_mnist_test.csv')
+print('Loading image data')
+x_train, y_train = load_data_from_file('training_data/mnist/sign_mnist_train.csv')
+x_test, y_test = load_data_from_file('training_data/mnist/sign_mnist_test.csv')
+print('Loaded image data')
 
-def train_model():
+def train_model(x_train, y_train, x_test, y_test):
 	x_train = x_train.reshape((x_train.shape[0], 28, 28, 1)).astype('float32')
 	x_test = x_test.reshape((x_test.shape[0], 28, 28, 1)).astype('float32')
 
@@ -69,7 +71,7 @@ if load_existing_model:
 	print('Loaded model from file')
 else:
 	print('Training new model')
-	model = train_model()
+	model = train_model(x_train, y_train, x_test, y_test)
 
 """
 plt.subplot(221)
