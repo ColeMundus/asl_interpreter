@@ -27,7 +27,6 @@ while ret:
 	ret, frame = camera.read()
 	frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	edDet = cv2.Canny(frame,100,120)
-	#mask = cv2.createBackgroundSubtractorKNN().apply(frame)
 	with_rect = cv2.rectangle(frame,(60,60),(375,375),(0,255,0),2)
 	downscale = cv2.resize(frame[60:375, 60:375], (128, 128), interpolation=cv2.INTER_LINEAR)
 	downscale = cv2.Canny(downscale,100,120)
@@ -44,20 +43,24 @@ while ret:
 			print(key)
 		printed = True
 		if k%256 == 32:
+			with open('training_data/capture/output.csv', 'a') as f:
+ 				f.write(str(alpha.index(key.lower())) + ',' + ','.join([str(i) for j in list(downscale/255) for i in j]) + '\n')
 			if not os.path.exists(f'training_data/capture/{key}/'):
 				os.makedirs(f'training_data/capture/{key}/')
 			img = f"training_data/capture/{key}/{str(count).zfill(5)}.png"
-			cv2.imwrite(img, frame)
+			cv2.imwrite(img, downscale)
 			print(f'Wrote to file '+img)
 			printed = False
 			count += 1
 	elif mode in ['selected', '2']:
 		if 123 > k%256 > 96:
 			key = alpha[k%256-97].capitalize()
+			with open('training_data/capture/output.csv', 'a') as f:
+ 				f.write(str(alpha.index(key.lower())) + ',' + ','.join([str(i) for j in list(downscale/255) for i in j]) + '\n')
 			if not os.path.exists(f'training_data/capture/{key}/'):
 				os.makedirs(f'training_data/capture/{key}/')
 			img = f"training_data/capture/{key}/{str(count).zfill(5)}.png"
-			cv2.imwrite(img, frame)
+			cv2.imwrite(img, downscale)
 			print(f'Wrote to file '+img)
 			count += 1
 
