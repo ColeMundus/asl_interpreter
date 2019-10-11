@@ -25,12 +25,14 @@ def load_data_from_file(filename):
 				parsed_image = [[int(p) for p in data[i*28:(i+1)*28]] for i in range(28)]
 				x_data.append(parsed_image)
 				y_data.append(line.strip().split(',')[0])
-	return np.asarray(x_train), np.asarray(y_data)
+	return np.asarray(x_data), np.asarray(y_data)
 
-x_train, y_train = load_data_from_file('sign_mnist_train.csv')
-x_test, y_test = load_data_from_file('sign_mnist_test.csv')
+print('Loading image data')
+x_train, y_train = load_data_from_file('training_data/mnist/sign_mnist_train.csv')
+x_test, y_test = load_data_from_file('training_data/mnist/sign_mnist_test.csv')
+print('Loaded image data')
 
-def train_model():
+def train_model(x_train, y_train, x_test, y_test):
 	x_train = x_train.reshape((x_train.shape[0], 28, 28, 1)).astype('float32')
 	x_test = x_test.reshape((x_test.shape[0], 28, 28, 1)).astype('float32')
 
@@ -41,20 +43,17 @@ def train_model():
 	y_test = np_utils.to_categorical(y_test)
 	num_classes = y_test.shape[1]
 
-	def larger_model():
-		model = Sequential()
-		model.add(Conv2D(30, (5, 5), input_shape=(28, 28, 1), activation='relu'))
-		model.add(MaxPooling2D())
-		model.add(Conv2D(15, (3, 3), activation='relu'))
-		model.add(MaxPooling2D())
-		model.add(Dropout(0.2))
-		model.add(Flatten())
-		model.add(Dense(128, activation='relu'))
-		model.add(Dense(50, activation='relu'))
-		model.add(Dense(num_classes, activation='softmax'))
-		model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-		return model
-	model = larger_model()
+	model = Sequential()
+	model.add(Conv2D(30, (5, 5), input_shape=(28, 28, 1), activation='relu'))
+	model.add(MaxPooling2D())
+	model.add(Conv2D(15, (3, 3), activation='relu'))
+	model.add(MaxPooling2D())
+	model.add(Dropout(0.2))
+	model.add(Flatten())
+	model.add(Dense(128, activation='relu'))
+	model.add(Dense(50, activation='relu'))
+	model.add(Dense(num_classes, activation='softmax'))
+	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 	model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=10, batch_size=200)
 	scores = model.evaluate(x_test, y_test, verbose=0)
 	print("Finished training new large CNN model with error rate: %.2f%%" % (100-scores[1]*100))
@@ -69,7 +68,7 @@ if load_existing_model:
 	print('Loaded model from file')
 else:
 	print('Training new model')
-	model = train_model()
+	model = train_model(x_train, y_train, x_test, y_test)
 
 """
 plt.subplot(221)
