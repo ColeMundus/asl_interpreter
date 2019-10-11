@@ -29,9 +29,12 @@ while ret:
 	edDet = cv2.Canny(frame,100,120)
 	#mask = cv2.createBackgroundSubtractorKNN().apply(frame)
 	with_rect = cv2.rectangle(frame,(60,60),(375,375),(0,255,0),2)
+	downscale = cv2.resize(frame[60:375, 60:375], (128, 128), interpolation=cv2.INTER_LINEAR)
+	downscale = cv2.Canny(downscale,100,120)
+	upscale = cv2.resize(downscale, (512, 512), interpolation=cv2.INTER_NEAREST)
 	cv2.imshow("Data Capture", with_rect)
 	cv2.imshow("Edge Detection", edDet)
-	cv2.imshow("Cropped", frame[60:375, 60:375])
+	cv2.imshow("Cropped", upscale)
 	k = cv2.waitKey(1)
 	if k%256 == 27:
 		break
