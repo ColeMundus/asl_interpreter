@@ -2,6 +2,8 @@ import tkinter as tk
 from PIL import Image
 import cv2
 
+alpha = 'abcdefghijklmnopqrstuvwxyz'
+
 print('Starting data collector')
 
 camera = cv2.VideoCapture(0)
@@ -20,5 +22,7 @@ while ret:
 		cv2.imwrite(img, frame)
 		print(f'Wrote to file '+img)
 		count += 1
+	elif 123 > k%256 > 96:
+		print(alpha[k%256-97])
 camera.release()
 cv2.destroyAllWindows()
