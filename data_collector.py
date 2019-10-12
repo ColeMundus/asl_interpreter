@@ -28,7 +28,7 @@ def write_original_image(cv2, frame, letter):
     if not os.path.exists(f'training_data/capture/original_images/'):
         os.makedirs(f'training_data/capture/original_images/')
     try:
-        last_number = int(glob.glob(f'training_data/capture/original_images/{letter}_*.png')[-1][-8:-4])
+        last_number = max([int(file.split('_')[-1][:4]) for file in glob.glob(f'training_data/capture/original_images/{letter}_*.png')])
     except Exception as e:
         last_number = 0
     path = f'training_data/capture/original_images/{letter}_{str(last_number+1).zfill(4)}.png'
@@ -56,7 +56,7 @@ while ret:
     data_output = cv2.resize(downscale_edges, (512, 512), interpolation=cv2.INTER_NEAREST)
     cv2.imshow("Cropped", data_output)
 
-    k = cv2.waitKey(1)
+    k = cv2.waitKey(20)
     if k%256 == 27:
         break
     if mode in ['random', '1']:
