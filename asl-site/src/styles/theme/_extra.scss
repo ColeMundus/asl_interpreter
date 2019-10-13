@@ -1,0 +1,47 @@
+@import './_color.scss';
+
+.main-bg {
+  background-color: $primary-text-color;
+}
+
+.router {
+  background-color: $banner-color;
+  @extend .f3, .fw5;
+  :link {
+    color: $primary-text-color;
+    text-decoration: none;
+  }
+}
+
+.capture {
+    background-color: $banner-color;
+    height: 5rem;
+    width: 50rem;
+    @extend .link, .dim, .ba, .bw2, .ph3, .pv2, .mb2, .dib;
+}
+
+.link {
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+
+.link:link, .link:visited {
+    transition: color .15s ease-in;
+}
+
+.link:hover {
+    transition: color .15s ease-in;
+}
+
+.link:active {
+    transition: color .15s ease-in;
+}
+
+.link:focus {
+    transition: color .15s ease-in;
+    outline: 1px dotted currentColor;
+}
+
+.webcam {
+    width: 50rem;
+}

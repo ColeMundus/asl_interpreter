@@ -1,0 +1,13 @@
+name: asl_interpreter
+env_specs:
+  default:
+    description: Default environment spec for running commands
+    packages:
+    - anaconda
+    channels: []
+    platforms:
+    - linux-64
+    - osx-64
+    - win-64
+variables:
+  GOOGLE_APPLICATION_CREDENTIALS: "/Users/rskrzypek/Documents/GitHub/asl_interpreter/My_First_Project-8f65729d080e.json"
