@@ -11,7 +11,7 @@ export default new Vuex.Store({
         "displayName": "None"
       }
     ],
-    token: "ya29.c.Kl6bB-gsJFXVNUer5OKkciPV0W2MrE450TfjweHHuawaew9UqsDCi_AlWzk4H3YQR-pQaWRNWzHBg7K9LyVFEgiiORED4nzz8uxVVb0PhQXrA2JOdhDiEJSHcKAMdwnf"
+    token: "ya29.c.Kl6bB3u2fki0Zs-bPbDL17jeF8HVoRxdcgqe_wdsysIzrG62Va2ZnSNnQ6RK_z9rBP6tnQPxRU5zdfjwOim5Jh9-D3brmgXmimqnPBxYvvSFVyip2LnukQTVY6lDZcp7"
   },
   mutations: {},
   actions: {}

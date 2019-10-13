@@ -27,7 +27,7 @@ export default {
         var reader = new FileReader()
         reader.onload = (e) => {
           var image = e.target.result
-          image = this.image.split(",")[1]
+          image = image.split(",")[1]
           var data = {
             "payload": {
               "image": {
@@ -35,6 +35,7 @@ export default {
               }
             }
           }
+          console.log(data)
           axios.post(URL,data,config)
             .then(res => {
               this.$store.state.payload = res.data.payload
