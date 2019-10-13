@@ -7,8 +7,8 @@ export default new Vuex.Store({
   state: {
     payload: [
       {
-        "classification": {"score":0.0},
-        "displayName": "a"
+        "classification": {"score":"None"},
+        "displayName": "None"
       }
     ],
     token: "ya29.c.Kl6bB-gsJFXVNUer5OKkciPV0W2MrE450TfjweHHuawaew9UqsDCi_AlWzk4H3YQR-pQaWRNWzHBg7K9LyVFEgiiORED4nzz8uxVVb0PhQXrA2JOdhDiEJSHcKAMdwnf"

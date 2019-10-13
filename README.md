@@ -1,7 +1,22 @@
-# ASL Interpreter - 0.1.0
+# American Sign Language Interpreter
 
-Placeholder
+Interpret sign language by taking a picture with your webcam
+or uploading a photo.
 
-## [Usage](www.link.to.future.website)
+Built using ...
 
-Placeholder
+Currently hosted on https://mimetic-design-255618.firebaseapp.com/#/
+
+## About
+
+This project aims to...
+
+
+## Installation
+### Requirements
+* Python
+* idk
+
+## Examples
+
+Images here

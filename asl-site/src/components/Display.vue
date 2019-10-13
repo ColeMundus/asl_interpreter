@@ -1,6 +1,6 @@
 <template lang="pug">
   div.flex.flex-row.justify-around.bg-white
-    h1 DisplayName: {{ display }}
+    h1 Predicted Letter: {{ display }}
     h1 Accuracy: {{ accuracy }}
 </template>
 

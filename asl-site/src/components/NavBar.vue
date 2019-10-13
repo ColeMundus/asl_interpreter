@@ -5,7 +5,8 @@
         h2 ASL Interpreter
       .justify-end
         router-link(to="/").mr4-ns.mh2 Home
-        router-link(to="../GitHub").mr4-ns.mh2 GitHub
+        router-link(to="/Examples").mr4-ns.mh2 Examples
+        a(href="https://github.com/ColeMundus/asl_interpreter").mr4-ns.mh2 GitHub
 </template>
 
 <script lang="ts">

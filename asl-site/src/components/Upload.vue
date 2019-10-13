@@ -1,6 +1,6 @@
 <template lang="pug">
   div(id="Upload").flex.center.justify-center
-    input(type="file" accept="image/*" @change="uploadImage($event)" id="file-input")
+    input(type="file" accept="image/*" @change="uploadImage($event)" id="file-input").pa3
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template lang="pug">
   div(id="WebCam").flex.flex-column.center.justify-center.items-center
     video(ref="video").webcam.pa3
-    button(@click.prevent="capture").capture Capture
+    button(@click.prevent="capture").capture.pa3 Capture
 </template>
 
 <script>
