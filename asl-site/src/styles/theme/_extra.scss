@@ -1,0 +1,25 @@
+@import './_color.scss';
+
+.main-bg {
+  background-color: $primary-text-color;
+}
+
+.router {
+  background-color: $banner-color;
+  @extend .f3, .fw5;
+  :link {
+    color: $primary-text-color;
+    text-decoration: none;
+  }
+}
+
+.capture {
+    background-color: $banner-color;
+    height: 5rem;
+    width: 10rem;
+    @extend .link, .dim, .ba, .bw2, .ph3, .pv2, .mb2, .dib, .br-pill;
+}
+
+.webcam {
+    width: 50rem;
+}

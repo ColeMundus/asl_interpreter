@@ -1,0 +1,17 @@
+@import './_color.scss';
+
+p {
+  color: $primary-text-color;
+  line-height: 2.1rem;
+  @extend .f5;
+}
+
+h2 {
+  color: $primary-text-color;
+  @extend .f2, .fw5;
+}
+
+h3 {
+  color: $primary-text-color;
+  @extend .f3, .fw5;
+}
